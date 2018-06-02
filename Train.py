@@ -22,7 +22,11 @@ dataset = np.reshape(dataset, (len(dataset), 1))
 scaler = MinMaxScaler()
 dataset = scaler.fit_transform(dataset)
 
+train_data = np.array(dataset[ : 3001])
+val_data = np.array(dataset[3001 : 4001])  
 
+x_train, y_train = process_data(train_data, lookback=10)
+x_val, y_val = process_data(val_data, lookback=10)
 
 
 
