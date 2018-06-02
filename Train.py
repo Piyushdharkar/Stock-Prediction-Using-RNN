@@ -5,6 +5,7 @@ import numpy as np
 import keras
 from sklearn.preprocessing import MinMaxScaler
 from ProcessData import process_data
+from FittedScaler import fitted_scaler
 
 dataset = pd.read_csv('dataset.csv')
 dataset = dataset.sort_values(by='Date')
@@ -12,8 +13,9 @@ dataset = dataset.sort_values(by='Date')
 dataset = dataset['Adj Close']
 dataset = np.reshape(dataset, (len(dataset), 1))
 
-scaler = MinMaxScaler()
-dataset = scaler.fit_transform(dataset)
+scaler = fitted_scaler(dataset)
+
+dataset = scaler.transform(dataset)
 
 train_data = np.array(dataset[ : 3001])
 val_data = np.array(dataset[3001 : 4001])  
