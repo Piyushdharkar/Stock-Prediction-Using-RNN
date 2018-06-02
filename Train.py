@@ -12,8 +12,8 @@ dataset = dataset.sort_values(by='Date')
 dataset = dataset['Adj Close']
 dataset = np.reshape(dataset, (len(dataset), 1))
 
-scaler = fitted_scaler(dataset)
-dataset = scaler.transform(dataset)
+#scaler = fitted_scaler(dataset)
+#dataset = scaler.transform(dataset)
 
 train_data = np.array(dataset[ : 3001])
 val_data = np.array(dataset[3001 : 4001])  
@@ -26,10 +26,11 @@ x_val = np.reshape(x_val, (x_val.shape[0], x_val.shape[1], 1))
 
 input_shape = (x_train.shape[1], 1)
 batch_size = 100
-epochs = 3
+epochs = 8
 
 model = Sequential()
-model.add(LSTM(50, input_shape=input_shape))
+model.add(LSTM(100, input_shape=input_shape))
+model.add(Dropout(0.3))
 model.add(Dense(1))
 model.add(Activation('linear'))
 
