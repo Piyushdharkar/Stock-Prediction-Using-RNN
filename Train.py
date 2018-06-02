@@ -26,11 +26,16 @@ x_val = np.reshape(x_val, (x_val.shape[0], x_val.shape[1], 1))
 
 input_shape = (x_train.shape[1], 1)
 batch_size = 100
-epochs = 20
+epochs = 3
 
 model = Sequential()
-model.add(LSTM(60, input_shape=input_shape))
-model.add(Dropout(0.8))
+
+model.add(LSTM(15, input_shape=input_shape, return_sequences=True))
+model.add(Dropout(0.4))
+
+model.add(LSTM(20))
+model.add(Dropout(0.4))
+
 model.add(Dense(1))
 model.add(Activation('linear'))
 

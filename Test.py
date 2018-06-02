@@ -3,6 +3,7 @@ import pandas as pd
 from ProcessData import process_data
 import numpy as np
 from FittedScaler import fitted_scaler
+import matplotlib.pyplot as plt
 
 model = load_model('saved_model.h5')
 
@@ -31,3 +32,15 @@ print("Actual adjusted closing price")
 print(y_test)
 print("Predicted adjusted closing price")
 print(y_pred)
+
+plt.subplot(331)
+plt.plot(y_test, y_pred)
+plt.xlabel('Actual adjusted closing price')
+plt.scatter(y_test, y_pred)
+plt.ylabel('Predicted adjusted closing price')
+plt.axis('scaled')
+
+
+
+
+
