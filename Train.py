@@ -29,7 +29,15 @@ x_train, y_train = process_data(train_data, lookback=10)
 x_val, y_val = process_data(val_data, lookback=10)
 
 
+input_shape = (x_train.shape[1], 1)
 
+
+model = Sequential()
+model.add(LSTM(50, input_shape=input_shape))
+model.add(Dense(1))
+model.add(Activation('linear'))
+
+model.compile(optimizer=keras.optimizers.Adam(), loss='mse')
 
 
 
