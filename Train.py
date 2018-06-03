@@ -3,8 +3,8 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dropout, Dense, Activation
 import numpy as np
 import keras
-from ProcessData import process_data
-from FittedScaler import fitted_scaler
+from DataProcessing import process_data, fitted_scaler
+
 
 dataset = pd.read_csv('dataset.csv')
 dataset = dataset.sort_values(by='Date')

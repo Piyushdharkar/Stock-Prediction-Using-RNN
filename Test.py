@@ -1,8 +1,7 @@
-from keras.models import load_model, Sequential
+from keras.models import load_model
 import pandas as pd
-from ProcessData import process_data
+from DataProcessing import process_data, fitted_scaler
 import numpy as np
-from FittedScaler import fitted_scaler
 import matplotlib.pyplot as plt
 
 model = load_model('saved_model.h5')
