@@ -15,11 +15,13 @@ dataset = np.reshape(dataset, (len(dataset), 1))
 scaler = fitted_scaler(dataset)
 dataset = scaler.transform(dataset)
 
+lookback = 2
+
 train_data = np.array(dataset[ : 4001])
 val_data = np.array(dataset[4001 : 4501])  
 
-x_train, y_train = process_data(train_data, lookback=10)
-x_val, y_val = process_data(val_data, lookback=10)
+x_train, y_train = process_data(train_data, lookback=lookback)
+x_val, y_val = process_data(val_data, lookback=lookback)
 
 x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 x_val = np.reshape(x_val, (x_val.shape[0], x_val.shape[1], 1))

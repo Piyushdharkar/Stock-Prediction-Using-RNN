@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 
 model = load_model('saved_model.h5')
 
+lookback = 2
+
 dataset = pd.read_csv('dataset.csv')
 dataset = dataset.sort_values(by='Date')
 dataset = np.array(dataset['Adj Close'])
@@ -19,7 +21,7 @@ test_data = dataset[4501 : ]
 
 test_data = scaler.transform(test_data)
 
-x_test, y_test = process_data(test_data, lookback=10)
+x_test, y_test = process_data(test_data, lookback=lookback)
 x_test = np.resize(x_test, (x_test.shape[0], x_test.shape[1], 1))
 y_test = np.reshape(y_test, (y_test.shape[0], 1))
 
